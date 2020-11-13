@@ -18,10 +18,10 @@ export default new Vuex.Store({
   },
   mutations: {
     ADD_TEXT({ state }, payload) {
-      state.words.push(...payload);
+      this.state.words.push(...payload);
     },
-    EDIT_TEXT({ state }, payload) {
-      state.words[payload.id] = payload;
+    EDIT_TEXT({ store }, payload) {
+      this.state.words[payload.id] = payload.item;
     },
     DELETE_TEXT({ store }, payload) {
       this.state.words.splice(payload.id, 1);
@@ -30,5 +30,6 @@ export default new Vuex.Store({
   actions: {
   },
   getters: {
+    getText: state => state.words,
   }
 })
